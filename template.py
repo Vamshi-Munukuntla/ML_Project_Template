@@ -24,7 +24,7 @@ list_of_files = [
     "config/config.yaml",
     "schema.yaml",
     "requirements.txt",
-    # "setup.py",
+    "setup.py",
     "main.py",
     "README.md"
 ]
@@ -32,28 +32,15 @@ list_of_files = [
 for filepath in list_of_files:
     filepath = Path(filepath)
     filedir, filename = os.path.split(filepath)
-    # print("filepath:", filepath)
-    # print("filedir:", filedir)
-    # print("filename:", filename)
     if filedir != "":
         os.makedirs(filedir, exist_ok=True)
         logging.info(f"Creating a new directory at : {filedir} for file: {filename}")
     if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
-        print("path:", os.path.exists(filepath))
-        print("size:", os.path.getsize(filepath))
-        print("if condition:", filepath)
-
         with open(filepath, "w") as f:
             pass
-        logging.info(f"Creating a new file: {filename} for path: {filepath}")
-        print("file_created:", filepath)
-        print()
+            logging.info(f"Creating a new file: {filename} for path: {filepath}")
     else:
-        print("path:", os.path.exists(filepath))
-        print("size:", os.path.getsize(filepath))
-        print("else condition:", filepath)
         logging.info(f"file is already present at: {filepath}")
-        print()
 
 
 
